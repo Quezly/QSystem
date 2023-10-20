@@ -1,0 +1,47 @@
+#█▀▀█ █░░█ █▀▀ ▀▀█ █░░ █░░█ ░ █▀▀▄ █▀▀ ▀▀█▀▀
+#█░░█ █░░█ █▀▀ ▄▀░ █░░ █▄▄█ ▄ █░░█ █▀▀ ░░█░░
+#▀▀▀█ ░▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀ ▄▄▄█ █ ▀░░▀ ▀▀▀ ░░▀░░
+
+# Discord: erisos
+
+
+
+prefix: "&fQuezly »"
+
+#İzin verilen komutlar
+allow_commands:
+  - /qSystem #Çakma lobi de etraf da düzenleme yapılacağı zaman efektleri kaldırma komutu.
+  - /qSpawn
+
+
+
+join_screen_text: true
+big_screen_text: "&3Hoşgeldin"
+small_screen_text: "&f/bilgi yazarak sunucu hakkında bilgi alabilirsin!"
+
+
+
+
+error_message: '&eBu işlemi gerçekleştirmek için yetkin bulunmuyor.'
+error_message_chat: '&eSohbette konuşmak için &aVIP+ &eveya daha üst bir rütbeye sahip olman gerekir.'
+
+
+pvp: true
+
+
+set_jump_block: false
+set_walk_speed: false
+set_fly_speed: false
+set_gamemode: ADVENTURE
+set_invisibility_effect: false
+on_exit_reset: false
+
+
+
+
+spawn_location:
+
+join_teleport_spawn: true
+respawn_teleport_spawn: true
+setspawn_message: "&aDoğma bloğu başarılı bir şekilde ayarlandı."
+notspawn_message: "&cDoğma noktası ayarlanmadı!"
