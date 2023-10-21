@@ -6,24 +6,19 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.w3c.dom.Entity;
-import org.w3c.dom.events.Event;
 
 public class QPvpEvent implements Listener {
+    QSystem plugin = (QSystem)JavaPlugin.getPlugin(QSystem.class);
 
-
-    QSystem plugin = JavaPlugin.getPlugin(QSystem.class);
-
-    @EventHandler
-    public void OnPvp (EntityDamageByEntityEvent e) {
-
-        Player player = (Player) e.getEntity();
-
-        if(plugin.getConfig().getBoolean("pvp")) {
-            if (!player.hasPermission("qsystem.pvp")) {
-                e.setCancelled(true);
-            }
-        }
+    public QPvpEvent() {
     }
 
+    @EventHandler
+    public void OnPvp(EntityDamageByEntityEvent e) {
+        Player player = (Player)e.getEntity();
+        if (this.plugin.getConfig().getBoolean("pvp") && !player.hasPermission("qsystem.pvp")) {
+            e.setCancelled(true);
+        }
+
+    }
 }

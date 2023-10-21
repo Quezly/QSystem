@@ -1,6 +1,5 @@
 package me.erisos.qsystem.listeners;
 
-import me.despical.commons.serializer.LocationSerializer;
 import me.erisos.qsystem.QSystem;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -10,41 +9,61 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 public class QSpawnEvent implements Listener {
+    private final QSystem plugin;
 
-    private QSystem plugin;
-    public QSpawnEvent (QSystem plugin) {this.plugin = plugin;}
-
+    public QSpawnEvent(QSystem plugin) {
+        this.plugin = plugin;
+    }
 
     @EventHandler
-    public boolean onJoin(PlayerJoinEvent e) {
+    public void onPlayerJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        Location configlocation = LocationSerializer.fromString(plugin.getConfig().getString("spawn-location"));
+        if (this.plugin.getConfig().getBoolean("firstjoin_teleport_spawn")) {
+            Location location;
+            if (!e.getPlayer().hasPlayedBefore()) {
+                if (this.plugin.getConfig().getString("spawn_location") == null) {
+                    return;
+                }
 
-        if (plugin.getConfig().getBoolean("join_teleport_spawn")) {
-            if (configlocation == null) {
+                location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
+                        this.plugin.getConfig().getDouble("spawn_location.x"),
+                        this.plugin.getConfig().getDouble("spawn_location.y"),
+                        this.plugin.getConfig().getDouble("spawn_location.z"),
+                        (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
+                        (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
+                player.teleport(location);
+            } else if (this.plugin.getConfig().getBoolean("join_teleport_spawn")) {
+                if (this.plugin.getConfig().getString("spawn_location") == null) {
+                    return;
+                }
 
-                return false;
+                location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
+                        this.plugin.getConfig().getDouble("spawn_location.x"),
+                        this.plugin.getConfig().getDouble("spawn_location.y"),
+                        this.plugin.getConfig().getDouble("spawn_location.z"),
+                        (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
+                        (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
+                player.teleport(location);
             }
-            player.teleport(configlocation);
-            return false;
         }
-        return false;
+
     }
 
     @EventHandler
-    public boolean onRespawn(PlayerRespawnEvent e) {
-        Location configlocation = LocationSerializer.fromString(plugin.getConfig().getString("spawn-location"));
-
-        if (plugin.getConfig().getBoolean("respawn_teleport_spawn")) {
-            if (configlocation == null) {
-                return false;
+    public void onRespawn(PlayerRespawnEvent e) {
+        if (this.plugin.getConfig().getBoolean("respawn_teleport_spawn")) {
+            if (this.plugin.getConfig().getString("spawn_location") == null) {
+                return;
             }
-            e.setRespawnLocation(configlocation);
-            return false;
+
+            Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
+                    this.plugin.getConfig().getDouble("spawn_location.x"),
+                    this.plugin.getConfig().getDouble("spawn_location.y"),
+                    this.plugin.getConfig().getDouble("spawn_location.z"),
+                    (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
+                    (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
+            e.setRespawnLocation(location);
         }
-        return false;
+
     }
-
-
-
 }

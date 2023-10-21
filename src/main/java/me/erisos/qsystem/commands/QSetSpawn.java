@@ -8,41 +8,29 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static org.bukkit.Bukkit.getPlayer;
-
 public class QSetSpawn implements CommandExecutor {
-
-    private QSystem plugin;
+    private final QSystem plugin;
 
     public QSetSpawn(QSystem plugin) {
         this.plugin = plugin;
     }
 
-    @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
         if (sender instanceof Player) {
-
-            Player player = (Player) sender;
-
+            Player player = (Player)sender;
             Location location = player.getLocation();
-
-            plugin.getConfig().set("spawn_location", location);
-            plugin.saveConfig();
-
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("setspawn_message")));
-
+            this.plugin.getConfig().set("spawn_location.world", location.getWorld().getName());
+            this.plugin.getConfig().set("spawn_location.x", location.getX());
+            this.plugin.getConfig().set("spawn_location.y", location.getY());
+            this.plugin.getConfig().set("spawn_location.z", location.getZ());
+            this.plugin.getConfig().set("spawn_location.yaw", location.getYaw());
+            this.plugin.getConfig().set("spawn_location.pitch", location.getPitch());
+            this.plugin.saveConfig();
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("setspawn_message")));
             return false;
-
+        } else {
+            System.out.println(ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("notspawn_message")));
+            return false;
         }
-
-            Player player = (Player) sender;
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("notspawn_message")));
-
-
-
-
-        return false;
     }
-
 }
