@@ -18,20 +18,25 @@ public class QSpawn implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player)sender;
-            if (!this.plugin.getConfig().isSet("spawn_location")) {
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("notspawn_message")));
-                return false;
+
+            if (player.hasPermission("qsystem.spawn")) {
+                if (!this.plugin.getConfig().isSet("spawn_location")) {
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("notspawn_message")));
+                    return false;
+                }
+
+                Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
+                        this.plugin.getConfig().getDouble("spawn_location.x"),
+                        this.plugin.getConfig().getDouble("spawn_location.y"),
+                        this.plugin.getConfig().getDouble("spawn_location.z"),
+                        (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
+                        (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
+
+                player.teleport(location);
             }
-
-            Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
-                    this.plugin.getConfig().getDouble("spawn_location.x"),
-                    this.plugin.getConfig().getDouble("spawn_location.y"),
-                    this.plugin.getConfig().getDouble("spawn_location.z"),
-                    (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
-                    (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
-
-            player.teleport(location);
         }
+
+
 
         return false;
     }

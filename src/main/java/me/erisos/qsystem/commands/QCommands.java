@@ -1,14 +1,20 @@
 package me.erisos.qsystem.commands;
 
+import me.erisos.qsystem.QSystem;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffectType;
+
 
 public class QCommands implements CommandExecutor {
-    public QCommands() {
+
+    private final QSystem plugin;
+
+    public QCommands(QSystem plugin) {
+        this.plugin = plugin;
     }
 
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -17,9 +23,12 @@ public class QCommands implements CommandExecutor {
             if (player.hasPermission("qsystem.admin")) {
                 player.setWalkSpeed(0.2F);
                 player.setFlySpeed(0.2F);
-                player.setGameMode(GameMode.CREATIVE);
+                player.setGameMode(GameMode.SURVIVAL);
                 player.setFoodLevel(20);
-                player.removePotionEffect(PotionEffectType.INVISIBILITY);
+                player.getActivePotionEffects().clear();
+
+            } else {
+                System.out.println(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("error_message")));
             }
         }
 

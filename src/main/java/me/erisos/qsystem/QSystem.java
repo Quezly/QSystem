@@ -21,7 +21,7 @@ public class QSystem extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new QSpawnEvent(this), this);
         this.getCommand("qSetSpawn").setExecutor(new QSetSpawn(this));
         this.getCommand("spawn").setExecutor(new QSpawn(this));
-        this.getCommand("qDefaultPlayerEffect").setExecutor(new QCommands());
+        this.getCommand("qDefaultPlayerEffect").setExecutor(new QCommands(this));
         this.saveDefaultConfig();
     }
 }
