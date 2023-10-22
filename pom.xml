@@ -6,7 +6,7 @@
 
     <groupId>me.erisos</groupId>
     <artifactId>qSystem</artifactId>
-    <version>1.2.1 </version>
+    <version>1.2.2 </version>
     <packaging>jar</packaging>
 
     <name>qSystem</name>
@@ -51,7 +51,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <outputDirectory>C:\Users\ademm\OneDrive\Masaüstü\Sunucular\Test\Test 1.8\plugins</outputDirectory>
+                    <outputDirectory>C:\Users\ademm\OneDrive\Masaüstü\Skyblock1-20\plugins</outputDirectory>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>
@@ -89,9 +89,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.destroystokyo.paper</groupId>
+            <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.12-R0.1-SNAPSHOT</version>
+            <version>1.19.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

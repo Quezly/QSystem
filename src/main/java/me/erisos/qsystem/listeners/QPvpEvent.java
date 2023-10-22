@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class QPvpEvent implements Listener {
     QSystem plugin = (QSystem)JavaPlugin.getPlugin(QSystem.class);
 
-    public QPvpEvent() {
+    public QPvpEvent(QSystem qSystem) {
     }
 
     @EventHandler

@@ -17,33 +17,32 @@ public class QSpawnEvent implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
+
+        Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
+                this.plugin.getConfig().getDouble("spawn_location.x"),
+                this.plugin.getConfig().getDouble("spawn_location.y"),
+                this.plugin.getConfig().getDouble("spawn_location.z"),
+                (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
+                (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
+
         Player player = e.getPlayer();
         if (this.plugin.getConfig().getBoolean("firstjoin_teleport_spawn")) {
-            Location location;
+
             if (!e.getPlayer().hasPlayedBefore()) {
                 if (this.plugin.getConfig().getString("spawn_location") == null) {
                     return;
                 }
-
-                location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
-                        this.plugin.getConfig().getDouble("spawn_location.x"),
-                        this.plugin.getConfig().getDouble("spawn_location.y"),
-                        this.plugin.getConfig().getDouble("spawn_location.z"),
-                        (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
-                        (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
                 player.teleport(location);
-            } else if (this.plugin.getConfig().getBoolean("join_teleport_spawn")) {
-                if (this.plugin.getConfig().getString("spawn_location") == null) {
-                    return;
+            }
+
+            else if (e.getPlayer().hasPlayedBefore()) {
+                if (this.plugin.getConfig().getBoolean("join_teleport_spawn")) {
+                    if (this.plugin.getConfig().getString("spawn_location") == null) {
+                        return;
+                    }
+                    player.teleport(location);
                 }
 
-                location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
-                        this.plugin.getConfig().getDouble("spawn_location.x"),
-                        this.plugin.getConfig().getDouble("spawn_location.y"),
-                        this.plugin.getConfig().getDouble("spawn_location.z"),
-                        (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
-                        (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
-                player.teleport(location);
             }
         }
 
