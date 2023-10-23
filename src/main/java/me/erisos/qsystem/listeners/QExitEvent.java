@@ -19,7 +19,7 @@ public class QExitEvent implements Listener {
         Player player = e.getPlayer();
         if (!this.plugin.getConfig().getBoolean("on_exit_reset")) {
             player.setFoodLevel(20);
-            player.removePotionEffect(PotionEffectType.INVISIBILITY);
+            player.getActivePotionEffects().clear();
             player.setWalkSpeed(0.2F);
             player.setFlySpeed(0.2F);
         }

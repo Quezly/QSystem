@@ -9,8 +9,9 @@
 #İzin verilen komutlar
 allow_commands:
   - /qSystem #Çakma lobi de etraf da düzenleme yapılacağı zaman efektleri kaldırma komutu.
+  - /qSetSpawn
   - /qDefaultPlayerEffect
-  - /qSpawn
+  - /spawn
   - /login
   - /register
 

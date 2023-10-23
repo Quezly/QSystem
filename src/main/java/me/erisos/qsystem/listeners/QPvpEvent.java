@@ -8,10 +8,9 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class QPvpEvent implements Listener {
+
     QSystem plugin = (QSystem)JavaPlugin.getPlugin(QSystem.class);
 
-    public QPvpEvent(QSystem qSystem) {
-    }
 
     @EventHandler
     public void OnPvp(EntityDamageByEntityEvent e) {

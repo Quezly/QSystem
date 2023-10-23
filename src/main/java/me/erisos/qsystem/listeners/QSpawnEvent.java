@@ -51,6 +51,8 @@ public class QSpawnEvent implements Listener {
     @EventHandler
     public void onRespawn(PlayerRespawnEvent e) {
         if (this.plugin.getConfig().getBoolean("respawn_teleport_spawn")) {
+
+
             if (this.plugin.getConfig().getString("spawn_location") == null) {
                 return;
             }
