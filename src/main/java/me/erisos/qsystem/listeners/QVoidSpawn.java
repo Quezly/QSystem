@@ -17,8 +17,10 @@ public class QVoidSpawn implements Listener {
 
     @EventHandler
     public void OnVoidTeleportSpawn(EntityDamageEvent e) {
-        Player player = (Player)e.getEntity();
+
         if (e.getEntity() instanceof Player) {
+
+            Player player = (Player)e.getEntity();
 
             if (plugin.getConfig().getBoolean("void_damage_teleport_spawn")) {
 
