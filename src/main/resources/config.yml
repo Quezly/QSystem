@@ -55,6 +55,7 @@ firstjoin_teleport_spawn: true
 respawn_teleport_spawn: true
 
 # SPAWN SYSTEM MESSAGES
+teleport_spawn_message: '&aBaşarılı bir şekilde doğma noktasına ışınlandın!'
 setspawn_message: '&aDoğma bloğu başarılı bir şekilde ayarlandı.'
 error_setspawn_message: '&cDoğma noktası ayarlanamadı!'
 notspawn_message: '&cDoğma noktası ayarlanmamış!'

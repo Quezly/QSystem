@@ -33,6 +33,7 @@ public class QSpawn implements CommandExecutor {
                         (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
 
                 player.teleport(location);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("teleport_spawn_message")));
             }
         }
 
