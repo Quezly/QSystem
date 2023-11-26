@@ -17,8 +17,8 @@ public class QSystem extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new QExitEvent(this), this);
         Bukkit.getPluginManager().registerEvents(new QSpawnEvent(this), this);
         Bukkit.getPluginManager().registerEvents(new QVoidSpawn(this), this);
-        Bukkit.getPluginManager().registerEvents(new QScreenText(this), this);
-        Bukkit.getPluginManager().registerEvents(new QPvpEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new QJoinTitle(this), this);
+        Bukkit.getPluginManager().registerEvents(new QChatEvent(this), this);
         this.getCommand("qSetSpawn").setExecutor(new QSetSpawn(this));
         this.getCommand("spawn").setExecutor(new QSpawn(this));
         this.getCommand("qDefaultPlayerEffect").setExecutor(new QCommands(this));

@@ -1,6 +1,7 @@
 package me.erisos.qsystem.listeners;
 
 import me.erisos.qsystem.QSystem;
+import me.erisos.qsystem.utils.Txt;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -38,7 +39,7 @@ public class QVoidSpawn implements Listener {
                             (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
                     player.teleport(location);
 
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("teleport_spawn_message")));
+                    player.sendMessage(Txt.parse(plugin.getConfig().getString("spawn.teleport_spawn_message")));
                 }
 
             }

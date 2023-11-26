@@ -5,8 +5,10 @@
 # Discord: erisos
 
 
+error_message: '&eBu işlemi gerçekleştirmek için yetkin bulunmuyor.'
+error_message_chat: '&eSohbette konuşmak için &fDEMIR &eveya daha üst bir rütbeye sahip olman gerekir.'
 
-#İzin verilen komutlar
+#allowed commands
 allow_commands:
   - /qSystem #Çakma lobi de etraf da düzenleme yapılacağı zaman efektleri kaldırma komutu.
   - /qSetSpawn
@@ -15,50 +17,65 @@ allow_commands:
   - /login
   - /register
 
-join_screen_text: true
-big_screen_text: '&3Hoşgeldin'
-small_screen_text: '&f/bilgi yazarak sunucu hakkında bilgi alabilirsin!'
+#Title to send when using a command not in the list
+not_allowed_command_send_title: true
+not_allowed_command_big_title: 'Ne yapmaya çalışıyorsun??!'
+not_allowed_command_small_title: 'Bir sen zekisin galiba...'
 
-error_message: '&eBu işlemi gerçekleştirmek için yetkin bulunmuyor.'
-error_message_chat: '&eSohbette konuşmak için &fDEMIR &eveya daha üst bir rütbeye sahip olman gerekir.'
+join_title:
+  join_send_title: true
+  join_big_title: '&3Hoşgeldin'
+  join_small_title: '&f/bilgi yazarak sunucu hakkında bilgi alabilirsin!'
 
-# RANDOM SETTINGS
-pvp: true
+bad_words_blocker:
+  #true prevents the player from sending messages if one of the words in the "bad_words" list appears in the player's messages.
+  swear_blocker: true
 
-# Player jump disable
+  bad_alert_big_title: '&cTerbiyesiz İnsan'
+  bad_alert_small_title: ''
+
+  bad_words:
+    - götünü
+    - ebeni
+    - ananı
+    - lan
+    - amk
+    - göt
+    - dedeni
+
+
+spawn:
+  # If the player falls into a gap, they are teleported to the spawn location.
+  fall_void_teleport_to_spawn: true
+
+  # Start at the spawn location when the player joins the server.
+  # WARN!(It only teleports players who have entered the game before to the spawn location.)
+  join_teleport_spawn: true
+
+  # Players entering the server for the first time start from the spawn location.
+  firstjoin_teleport_spawn: true
+
+  # Dead players start from the spawn location.
+  respawn_teleport_spawn: true
+
+  # Spawn command open/false
+  spawn_command: true
+
+  #Spawn System Messages
+  setspawn_message: '&aDoğma bloğu başarılı bir şekilde ayarlandı.'
+  error_setspawn_message: '&cDoğma noktası ayarlanamadı!'
+  notspawn_message: '&cDoğma noktası ayarlanmamış!'
+  teleport_spawn_message: '&aBaşarılı bir şekilde doğma noktasına ışınlandın!'
+
+
+#specific and varied characteristics.
 set_jump_block: false
-
-# Set walk speed 0
 set_walk_speed: false
-
-# Set fly speed 0
 set_fly_speed: false
-
 set_gamemode: ADVENTURE
 set_invisibility_effect: false
 on_exit_reset: false
 
-
-
-
-# If the player falls into a gap, they are teleported to the spawn location.
-fall_void_teleport_to_spawn: true
-
-# Start at the spawn location when the player joins the server.
-# WARN!(It only teleports players who have entered the game before to the spawn location.)
-join_teleport_spawn: true
-
-# Players entering the server for the first time start from the spawn location.
-firstjoin_teleport_spawn: true
-
-# Dead players start from the spawn location.
-respawn_teleport_spawn: true
-
-# SPAWN SYSTEM MESSAGES
-teleport_spawn_message: '&aBaşarılı bir şekilde doğma noktasına ışınlandın!'
-setspawn_message: '&aDoğma bloğu başarılı bir şekilde ayarlandı.'
-error_setspawn_message: '&cDoğma noktası ayarlanamadı!'
-notspawn_message: '&cDoğma noktası ayarlanmamış!'
 
 
 

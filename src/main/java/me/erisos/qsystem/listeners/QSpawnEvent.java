@@ -18,6 +18,10 @@ public class QSpawnEvent implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
 
+        if (!this.plugin.getConfig().isConfigurationSection("spawn_location")) {
+            return;
+        }
+
         Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
                 this.plugin.getConfig().getDouble("spawn_location.x"),
                 this.plugin.getConfig().getDouble("spawn_location.y"),
@@ -27,19 +31,12 @@ public class QSpawnEvent implements Listener {
 
         Player player = e.getPlayer();
         if (this.plugin.getConfig().getBoolean("firstjoin_teleport_spawn")) {
-
             if (!e.getPlayer().hasPlayedBefore()) {
-                if (this.plugin.getConfig().getString("spawn_location") == null) {
-                    return;
-                }
                 player.teleport(location);
             }
 
             else if (e.getPlayer().hasPlayedBefore()) {
                 if (this.plugin.getConfig().getBoolean("join_teleport_spawn")) {
-                    if (this.plugin.getConfig().getString("spawn_location") == null) {
-                        return;
-                    }
                     player.teleport(location);
                 }
 

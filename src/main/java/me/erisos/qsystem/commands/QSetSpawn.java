@@ -1,6 +1,7 @@
 package me.erisos.qsystem.commands;
 
 import me.erisos.qsystem.QSystem;
+import me.erisos.qsystem.utils.Txt;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -20,25 +21,26 @@ public class QSetSpawn implements CommandExecutor {
 
             if (sender instanceof Player) {
 
-                if (player.hasPermission("qsystem.setspawn")) {
+                    if (player.hasPermission("qsystem.setspawn")) {
 
-                    Location location = player.getLocation();
-                    this.plugin.getConfig().set("spawn_location.world", location.getWorld().getName());
-                    this.plugin.getConfig().set("spawn_location.x", location.getX());
-                    this.plugin.getConfig().set("spawn_location.y", location.getY());
-                    this.plugin.getConfig().set("spawn_location.z", location.getZ());
-                    this.plugin.getConfig().set("spawn_location.yaw", location.getYaw());
-                    this.plugin.getConfig().set("spawn_location.pitch", location.getPitch());
-                    this.plugin.saveConfig();
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("setspawn_message")));
+                        Location location = player.getLocation();
+                        this.plugin.getConfig().set("spawn_location.world", location.getWorld().getName());
+                        this.plugin.getConfig().set("spawn_location.x", location.getX());
+                        this.plugin.getConfig().set("spawn_location.y", location.getY());
+                        this.plugin.getConfig().set("spawn_location.z", location.getZ());
+                        this.plugin.getConfig().set("spawn_location.yaw", location.getYaw());
+                        this.plugin.getConfig().set("spawn_location.pitch", location.getPitch());
+                        this.plugin.saveConfig();
+                        player.sendMessage(Txt.parse(this.plugin.getConfig().getString("spawn.setspawn_message")));
+                        return false;
+                    } else {
+                        System.out.println(Txt.parse(plugin.getConfig().getString("spawn.error_message")));
+                    }
                     return false;
-                } else {
-                    System.out.println(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("error_message")));
-                }
-                return false;
+
 
             } else {
-                System.out.println(ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("notspawn_message")));
+                System.out.println(Txt.parse(this.plugin.getConfig().getString("spawn.notspawn_message")));
                 return false;
             }
 

@@ -1,18 +1,18 @@
 package me.erisos.qsystem.listeners;
 
 import me.erisos.qsystem.QSystem;
-import org.bukkit.ChatColor;
+import me.erisos.qsystem.utils.Txt;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 
-public class QScreenText implements Listener {
+public class QJoinTitle implements Listener {
 
     private final QSystem plugin;
 
-    public QScreenText(QSystem plugin) {
+    public QJoinTitle(QSystem plugin) {
         this.plugin = plugin;
     }
 
@@ -22,9 +22,9 @@ public class QScreenText implements Listener {
 
         Player player = e.getPlayer();
 
-        if (this.plugin.getConfig().getBoolean("join_screen_text")) {
-            player.sendTitle(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("big_screen_text")),
-                    ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("small_screen_text")));
+        if (this.plugin.getConfig().getBoolean("join_title.join_send_title")) {
+            player.sendTitle(Txt.parse(plugin.getConfig().getString("join_title.join_big_title")),
+                    Txt.parse(plugin.getConfig().getString("join_title.join_small_title")));
         }
     }
 
