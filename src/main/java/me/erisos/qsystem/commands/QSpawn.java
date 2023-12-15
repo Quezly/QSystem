@@ -1,8 +1,7 @@
 package me.erisos.qsystem.commands;
 
+import me.despical.commons.util.Strings;
 import me.erisos.qsystem.QSystem;
-import me.erisos.qsystem.utils.Txt;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,25 +19,23 @@ public class QSpawn implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player)sender;
 
-            if (plugin.getConfig().getBoolean("spawn_command")) {
                 if (player.hasPermission("qsystem.spawn")) {
-                    if (!this.plugin.getConfig().isSet("spawn_location")) {
-                        player.sendMessage(Txt.parse(this.plugin.getConfig().getString("notspawn_message")));
+                    if (!this.plugin.getConfig().isSet("spawn.spawn_location")) {
+                        player.sendMessage(Strings.format(this.plugin.getConfig().getString("spawn.notspawn_message")));
                         return false;
                     }
 
-                    Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
-                            this.plugin.getConfig().getDouble("spawn_location.x"),
-                            this.plugin.getConfig().getDouble("spawn_location.y"),
-                            this.plugin.getConfig().getDouble("spawn_location.z"),
-                            (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
-                            (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
+                    Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn.spawn_location.world")),
+                            this.plugin.getConfig().getDouble("spawn.spawn_location.x"),
+                            this.plugin.getConfig().getDouble("spawn.spawn_location.y"),
+                            this.plugin.getConfig().getDouble("spawn.spawn_location.z"),
+                            (float)this.plugin.getConfig().getDouble("spawn.spawn_location.yaw"),
+                            (float)this.plugin.getConfig().getDouble("spawn.spawn_location.pitch"));
 
                     player.teleport(location);
-                    player.sendMessage(Txt.parse(plugin.getConfig().getString("teleport_spawn_message")));
+                    player.sendMessage(Strings.format(plugin.getConfig().getString("spawn.teleport_spawn_message")));
                 }
             }
-        }
 
 
 

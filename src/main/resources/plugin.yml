@@ -8,3 +8,5 @@ commands:
     description: spawn
   qDefaultPlayerEffect:
     description: player effect reload
+  discord:
+    description: send a discord link to a player

@@ -1,7 +1,7 @@
 package me.erisos.qsystem.listeners;
 
+import me.despical.commons.util.Strings;
 import me.erisos.qsystem.QSystem;
-import me.erisos.qsystem.utils.Txt;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,8 +23,8 @@ public class QJoinTitle implements Listener {
         Player player = e.getPlayer();
 
         if (this.plugin.getConfig().getBoolean("join_title.join_send_title")) {
-            player.sendTitle(Txt.parse(plugin.getConfig().getString("join_title.join_big_title")),
-                    Txt.parse(plugin.getConfig().getString("join_title.join_small_title")));
+            player.sendTitle(Strings.format(plugin.getConfig().getString("join_title.join_big_title")),
+                    Strings.format(plugin.getConfig().getString("join_title.join_small_title")));
         }
     }
 

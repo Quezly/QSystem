@@ -1,8 +1,7 @@
 package me.erisos.qsystem.commands;
 
+import me.despical.commons.util.Strings;
 import me.erisos.qsystem.QSystem;
-import me.erisos.qsystem.utils.Txt;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -25,22 +24,22 @@ public class QSetSpawn implements CommandExecutor {
 
                         Location location = player.getLocation();
                         this.plugin.getConfig().set("spawn_location.world", location.getWorld().getName());
-                        this.plugin.getConfig().set("spawn_location.x", location.getX());
-                        this.plugin.getConfig().set("spawn_location.y", location.getY());
-                        this.plugin.getConfig().set("spawn_location.z", location.getZ());
-                        this.plugin.getConfig().set("spawn_location.yaw", location.getYaw());
+                        this.plugin.getConfig().set("spawn.spawn_location.x", location.getX());
+                        this.plugin.getConfig().set("spawn.spawn_location.y", location.getY());
+                        this.plugin.getConfig().set("spawn.spawn_location.z", location.getZ());
+                        this.plugin.getConfig().set("spawn.spawn_location.yaw", location.getYaw());
                         this.plugin.getConfig().set("spawn_location.pitch", location.getPitch());
                         this.plugin.saveConfig();
-                        player.sendMessage(Txt.parse(this.plugin.getConfig().getString("spawn.setspawn_message")));
+                        player.sendMessage(Strings.format(this.plugin.getConfig().getString("spawn.setspawn_message")));
                         return false;
                     } else {
-                        System.out.println(Txt.parse(plugin.getConfig().getString("spawn.error_message")));
+                        System.out.println(Strings.format(plugin.getConfig().getString("spawn.error_message")));
                     }
                     return false;
 
 
             } else {
-                System.out.println(Txt.parse(this.plugin.getConfig().getString("spawn.notspawn_message")));
+                System.out.println(Strings.format(this.plugin.getConfig().getString("spawn.notspawn_message")));
                 return false;
             }
 

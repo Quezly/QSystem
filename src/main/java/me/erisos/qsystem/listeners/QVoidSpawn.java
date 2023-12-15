@@ -1,8 +1,7 @@
 package me.erisos.qsystem.listeners;
 
+import me.despical.commons.util.Strings;
 import me.erisos.qsystem.QSystem;
-import me.erisos.qsystem.utils.Txt;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,23 +22,23 @@ public class QVoidSpawn implements Listener {
 
             Player player = (Player)e.getEntity();
 
-            if (plugin.getConfig().getBoolean("void_damage_teleport_spawn")) {
+            if (plugin.getConfig().getBoolean("spawn.void_damage_teleport_spawn")) {
 
-                if (this.plugin.getConfig().getString("spawn_location") == null) {
+                if (this.plugin.getConfig().getString("spawn.spawn_location") == null) {
                     return;
                 }
                 if (e.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
 
 
                     Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
-                            this.plugin.getConfig().getDouble("spawn_location.x"),
-                            this.plugin.getConfig().getDouble("spawn_location.y"),
-                            this.plugin.getConfig().getDouble("spawn_location.z"),
-                            (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
+                            this.plugin.getConfig().getDouble("spawn.spawn_location.x"),
+                            this.plugin.getConfig().getDouble("spawn.spawn_location.y"),
+                            this.plugin.getConfig().getDouble("spawn.spawn_location.z"),
+                            (float)this.plugin.getConfig().getDouble("spawn.spawn_location.yaw"),
                             (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
                     player.teleport(location);
 
-                    player.sendMessage(Txt.parse(plugin.getConfig().getString("spawn.teleport_spawn_message")));
+                    player.sendMessage(Strings.format(plugin.getConfig().getString("spawn.teleport_spawn_message")));
                 }
 
             }

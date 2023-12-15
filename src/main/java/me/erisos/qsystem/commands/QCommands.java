@@ -1,8 +1,7 @@
 package me.erisos.qsystem.commands;
 
+import me.despical.commons.util.Strings;
 import me.erisos.qsystem.QSystem;
-import me.erisos.qsystem.utils.Txt;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -29,7 +28,7 @@ public class QCommands implements CommandExecutor {
                 player.getActivePotionEffects().clear();
 
             } else {
-                System.out.println(Txt.parse(plugin.getConfig().getString("error_message")));
+                System.out.println(Strings.format(plugin.getConfig().getString("error_message")));
             }
         }
 

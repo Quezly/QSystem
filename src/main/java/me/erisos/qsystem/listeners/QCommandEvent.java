@@ -1,14 +1,12 @@
 package me.erisos.qsystem.listeners;
 
+import me.despical.commons.util.Strings;
 import me.erisos.qsystem.QSystem;
-import me.erisos.qsystem.utils.Txt;
-import org.bukkit.ChatColor;
 import org.bukkit.EntityEffect;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import java.util.List;
@@ -33,12 +31,12 @@ public class QCommandEvent implements Listener {
 
         if (!allow_commands.stream().anyMatch(message::startsWith)) {
             e.setCancelled(true);
-            player.sendMessage(Txt.parse(plugin.getConfig().getString("error_message")));
+            player.sendMessage(Strings.format(plugin.getConfig().getString("error_message")));
             if (plugin.getConfig().getBoolean("not_allowed_command_send_title")) {
-                player.sendTitle(Txt.parse(plugin.getConfig().getString("not_allowed_command_big_title")),
+                player.sendTitle(Strings.format(plugin.getConfig().getString("not_allowed_command_big_title")),
                         plugin.getConfig().getString("not_allowed_command_small_title"));
-                player.playSound(player.getLocation(), Sound.ENTITY_GUARDIAN_ATTACK, 0.7F, 0.7F);
-                player.playEffect(EntityEffect.TELEPORT_ENDER);
+                player.playSound(player.getLocation(), Sound.ENTITY_ZOMBIE_DEATH, 0.7F, 0.7F);
+                player.playEffect(EntityEffect.ZOMBIE_TRANSFORM);
             }
         }
 

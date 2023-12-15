@@ -5,8 +5,9 @@
 # Discord: erisos
 
 
-error_message: '&eBu işlemi gerçekleştirmek için yetkin bulunmuyor.'
-error_message_chat: '&eSohbette konuşmak için &fDEMIR &eveya daha üst bir rütbeye sahip olman gerekir.'
+error_message: "&eBu işlemi gerçekleştirmek için yetkin bulunmuyor."
+error_message_chat: "&eSohbette konuşmak için &fDEMIR &eveya daha üst bir rütbeye sahip olman gerekir."
+discord_link: "&9https://discord.gg/UtpFGAMJVS"
 
 #allowed commands
 allow_commands:
@@ -17,22 +18,26 @@ allow_commands:
   - /login
   - /register
 
+
+#Turns off players' login and logout messages.
+join_leave_message_disable: true
+
 #Title to send when using a command not in the list
 not_allowed_command_send_title: true
-not_allowed_command_big_title: 'Ne yapmaya çalışıyorsun??!'
-not_allowed_command_small_title: 'Bir sen zekisin galiba...'
+not_allowed_command_big_title: "Ne yapmaya çalışıyorsun??!"
+not_allowed_command_small_title: "Bir sen zekisin galiba..."
 
 join_title:
   join_send_title: true
-  join_big_title: '&3Hoşgeldin'
-  join_small_title: '&f/bilgi yazarak sunucu hakkında bilgi alabilirsin!'
+  join_big_title: "&3Hoşgeldin"
+  join_small_title: "&f/bilgi yazarak sunucu hakkında bilgi alabilirsin!"
 
 bad_words_blocker:
-  #true prevents the player from sending messages if one of the words in the "bad_words" list appears in the player's messages.
+  #true prevents the player from sending messages if one of the words in the "bad_words" list appears in the player"s messages.
   swear_blocker: true
 
-  bad_alert_big_title: '&cTerbiyesiz İnsan'
-  bad_alert_small_title: ''
+  bad_alert_big_title: "&cTerbiyesiz İnsan"
+  bad_alert_small_title: ""
 
   bad_words:
     - götünü
@@ -58,15 +63,33 @@ spawn:
   # Dead players start from the spawn location.
   respawn_teleport_spawn: true
 
-  # Spawn command open/false
-  spawn_command: true
-
   #Spawn System Messages
-  setspawn_message: '&aDoğma bloğu başarılı bir şekilde ayarlandı.'
-  error_setspawn_message: '&cDoğma noktası ayarlanamadı!'
-  notspawn_message: '&cDoğma noktası ayarlanmamış!'
-  teleport_spawn_message: '&aBaşarılı bir şekilde doğma noktasına ışınlandın!'
+  setspawn_message: "&aDoğma bloğu başarılı bir şekilde ayarlandı."
+  error_setspawn_message: "&cDoğma noktası ayarlanamadı!"
+  notspawn_message: "&cDoğma noktası ayarlanmamış!"
+  teleport_spawn_message: "&aBaşarılı bir şekilde doğma noktasına ışınlandın!"
 
+
+mob_settings:
+  barrier_block_mob_spawn_disable: true
+  enderman_teleport_disable: true
+
+
+
+
+mob_remove:
+  mob_remove_enable: true
+  mob_remove_region_pos:
+    pos1:
+      world: qSystem
+      x: 0
+      y: 0
+      z: 0
+    pos2:
+      world: qSystem
+      x: 0
+      y: 0
+      z: 0
 
 #specific and varied characteristics.
 set_jump_block: false

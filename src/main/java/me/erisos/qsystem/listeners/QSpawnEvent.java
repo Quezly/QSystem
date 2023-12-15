@@ -18,25 +18,25 @@ public class QSpawnEvent implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
 
-        if (!this.plugin.getConfig().isConfigurationSection("spawn_location")) {
+        if (!this.plugin.getConfig().isConfigurationSection("spawn.spawn_location")) {
             return;
         }
 
-        Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
-                this.plugin.getConfig().getDouble("spawn_location.x"),
-                this.plugin.getConfig().getDouble("spawn_location.y"),
-                this.plugin.getConfig().getDouble("spawn_location.z"),
-                (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
-                (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
+        Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn.spawn_location.world")),
+                this.plugin.getConfig().getDouble("spawn.spawn_location.x"),
+                this.plugin.getConfig().getDouble("spawn.spawn_location.y"),
+                this.plugin.getConfig().getDouble("spawn.spawn_location.z"),
+                (float)this.plugin.getConfig().getDouble("spawn.spawn_location.yaw"),
+                (float)this.plugin.getConfig().getDouble("spawn.spawn_location.pitch"));
 
         Player player = e.getPlayer();
-        if (this.plugin.getConfig().getBoolean("firstjoin_teleport_spawn")) {
+        if (this.plugin.getConfig().getBoolean("spawn.firstjoin_teleport_spawn")) {
             if (!e.getPlayer().hasPlayedBefore()) {
                 player.teleport(location);
             }
 
             else if (e.getPlayer().hasPlayedBefore()) {
-                if (this.plugin.getConfig().getBoolean("join_teleport_spawn")) {
+                if (this.plugin.getConfig().getBoolean("spawn.join_teleport_spawn")) {
                     player.teleport(location);
                 }
 
@@ -47,7 +47,7 @@ public class QSpawnEvent implements Listener {
 
     @EventHandler
     public void onRespawn(PlayerRespawnEvent e) {
-        if (this.plugin.getConfig().getBoolean("respawn_teleport_spawn")) {
+        if (this.plugin.getConfig().getBoolean("spawn.respawn_teleport_spawn")) {
 
 
             if (this.plugin.getConfig().getString("spawn_location") == null) {
@@ -55,10 +55,10 @@ public class QSpawnEvent implements Listener {
             }
 
             Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
-                    this.plugin.getConfig().getDouble("spawn_location.x"),
-                    this.plugin.getConfig().getDouble("spawn_location.y"),
-                    this.plugin.getConfig().getDouble("spawn_location.z"),
-                    (float)this.plugin.getConfig().getDouble("spawn_location.yaw"),
+                    this.plugin.getConfig().getDouble("spawn.spawn_location.x"),
+                    this.plugin.getConfig().getDouble("spawn.spawn_location.y"),
+                    this.plugin.getConfig().getDouble("spawn.spawn_location.z"),
+                    (float)this.plugin.getConfig().getDouble("spawn.spawn_location.yaw"),
                     (float)this.plugin.getConfig().getDouble("spawn_location.pitch"));
             e.setRespawnLocation(location);
         }
