@@ -2,73 +2,46 @@ package me.erisos.qsystem.entity;
 
 import me.erisos.qsystem.QSystem;
 import org.bukkit.Location;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.Listener;
+import org.bukkit.util.BoundingBox;
 
 public class RegionJoinKill implements Listener {
 
-    private QSystem plugin;
+    private final QSystem plugin;
+    private final Location min, max;
+
     public RegionJoinKill(QSystem plugin) {
         this.plugin = plugin;
+
+        FileConfiguration config = plugin.getConfig();
+
+        this.min = new Location(plugin.getServer().getWorld(config.getString("mob_remove.pos1.world")),
+                config.getDouble("mob_remove.pos1.x"),
+                config.getDouble("mob_remove.pos1.y"),
+                config.getDouble("mob_remove.pos1.z"));
+
+        this.max = new Location(plugin.getServer().getWorld(config.getString("mob_remove.pos2.world")),
+                config.getDouble("mob_remove.pos2.x"),
+                config.getDouble("mob_remove.pos2.y"),
+                config.getDouble("mob_remove.pos2.z"));
+
+        startChecking();
     }
 
+    private void startChecking() {
+        if (!plugin.getConfig().getBoolean("mob_remove.mob_remove_enable")) return;
 
-    Location min = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("mob_remove.pos1.world")),
-            this.plugin.getConfig().getDouble("mob_remove.pos1.x"),
-            this.plugin.getConfig().getDouble("mob_remove.pos1.y"),
-            this.plugin.getConfig().getDouble("mob_remove.pos1.z"));
+        plugin.getServer().getScheduler().runTaskTimer(plugin, () -> {
+            for (LivingEntity entity : min.getWorld().getLivingEntities()) {
+                Location origin = entity.getLocation();
+                BoundingBox boundingBox = new BoundingBox(min.getX(), min.getX(), min.getZ(), max.getX(), max.getY(), max.getZ());
 
-    Location max = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("mob_remove.pos2.world")),
-            this.plugin.getConfig().getDouble("mob_remove.pos2.x"),
-            this.plugin.getConfig().getDouble("mob_remove.pos2.y"),
-            this.plugin.getConfig().getDouble("mob_remove.pos2.z"));
-
-
-    void Region(QSystem plugin, Location min, Location max) {
-
-
-        if (plugin.getConfig().getBoolean("mob_remove.mob_remove_enable")) {
-            plugin.getServer().getScheduler().runTaskTimer(plugin, () -> {
-                for (LivingEntity entity : min.getWorld().getLivingEntities()) {
-                    Location origin = entity.getLocation();
-
-                    /*
-                    BoundingBox boundingBox = new BoundingBox(min.getX(), min.getX(), min.getZ(), max.getX(), max.getY(), max.getZ());
-
-
-
-                    if (boundingBox.contains(origin.getX(), origin.getY(), origin.getZ())) {
-                        entity.remove();
-                    }
-
-
-
-                      ////////////////////     //////////////////////////////      ////////////////////       //////////////
-
-
-
-                    if ((origin.getX() == min.getX() && origin.getX() == max.getX()) &&
-                            ((origin.getY() == min.getY() && origin.getY() == max.getY()) &&
-                                    (origin.getZ() == min.getZ() && origin.getZ() == max.getZ()))) {
-
-                        entity.remove();
-
-                    }
-
-
-                         ////////////////////     //////////////////////////////      ////////////////////       //////////////
-
-
-
-                    if (new IntRange(min.getX(), max.getX()).containsDouble(origin.getX())
-                            && new IntRange(min.getY(), max.getY()).containsDouble(origin.getY())
-                            && new IntRange(min.getZ(), max.getZ()).containsDouble(origin.getZ())) {
-
-                        entity.remove();
-                    }
-                     */
+                if (boundingBox.contains(origin.getX(), origin.getY(), origin.getZ())) {
+                    entity.remove();
                 }
-            }, 0, 20 * 10);
-        }
+            }
+        }, 0, 20 * 10);
     }
 }
