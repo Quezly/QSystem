@@ -5,7 +5,6 @@ import me.erisos.qsystem.commands.QDiscord;
 import me.erisos.qsystem.commands.QSetSpawn;
 import me.erisos.qsystem.commands.QSpawn;
 import me.erisos.qsystem.entity.EntityEvents;
-import me.erisos.qsystem.entity.RegionJoinKill;
 import me.erisos.qsystem.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,7 +23,7 @@ public class QSystem extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new QChatEvent(this), this);
 
         new EntityEvents(this);
-        new RegionJoinKill(this);
+        new QAutoCommands(this);
 
         getCommand("qSetSpawn").setExecutor(new QSetSpawn(this));
         getCommand("spawn").setExecutor(new QSpawn(this));

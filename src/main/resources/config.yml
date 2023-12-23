@@ -75,21 +75,16 @@ mob_settings:
   enderman_teleport_disable: true
 
 
+time_loop: true
+time_loops:
+  '1':
+    hour: 12
+    minutes: 00
+    commands:
+      - "/kill erisos"
+    message: "EZ LAN"
+    message_perm: barbarium.boss1
 
-
-mob_remove:
-  mob_remove_enable: true
-  mob_remove_region_pos:
-    pos1:
-      world: qSystem
-      x: 0
-      y: 0
-      z: 0
-    pos2:
-      world: qSystem
-      x: 0
-      y: 0
-      z: 0
 
 #specific and varied characteristics.
 set_jump_block: false
