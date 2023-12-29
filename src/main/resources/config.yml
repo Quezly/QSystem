@@ -5,13 +5,14 @@
 # Discord: erisos
 
 
-error_message: "&eBu işlemi gerçekleştirmek için yetkin bulunmuyor."
-error_message_chat: "&eSohbette konuşmak için &fDEMIR &eveya daha üst bir rütbeye sahip olman gerekir."
-discord_link: "&9https://discord.gg/UtpFGAMJVS"
+error_message: "&eYou do not have the authority to carry out this operation."
+error_message_chat: "&eTo speak in the chat you need to have the rank &fVIP &eor higher."
+discord_link: "&9https://discord.gg/q4EKuxAvRt"
 
 #allowed commands
 allow_commands:
-  - /qSystem #Çakma lobi de etraf da düzenleme yapılacağı zaman efektleri kaldırma komutu.
+  - /anvil
+  - /örs
   - /qSetSpawn
   - /qDefaultPlayerEffect
   - /spawn
@@ -24,29 +25,26 @@ join_leave_message_disable: true
 
 #Title to send when using a command not in the list
 not_allowed_command_send_title: true
-not_allowed_command_big_title: "Ne yapmaya çalışıyorsun??!"
-not_allowed_command_small_title: "Bir sen zekisin galiba..."
+not_allowed_command_big_title: "What are you trying to do?!"
+not_allowed_command_small_title: "I guess you're the only smart one..."
 
 join_title:
   join_send_title: true
-  join_big_title: "&3Hoşgeldin"
-  join_small_title: "&f/bilgi yazarak sunucu hakkında bilgi alabilirsin!"
+  join_big_title: "&3Welcome"
+  join_small_title: "&fYou can get information about the server by typing /help"
 
+
+#BETA #BETA #BETA
 bad_words_blocker:
   #true prevents the player from sending messages if one of the words in the "bad_words" list appears in the player"s messages.
   swear_blocker: true
 
-  bad_alert_big_title: "&cTerbiyesiz İnsan"
+  bad_alert_big_title: "&cRude Human!!"
   bad_alert_small_title: ""
 
   bad_words:
-    - götünü
-    - ebeni
-    - ananı
-    - lan
-    - amk
-    - göt
-    - dedeni
+    - fuck
+    - mom
 
 
 spawn:
@@ -63,16 +61,22 @@ spawn:
   # Dead players start from the spawn location.
   respawn_teleport_spawn: true
 
-  #Spawn System Messages
-  setspawn_message: "&aDoğma bloğu başarılı bir şekilde ayarlandı."
-  error_setspawn_message: "&cDoğma noktası ayarlanamadı!"
-  notspawn_message: "&cDoğma noktası ayarlanmamış!"
-  teleport_spawn_message: "&aBaşarılı bir şekilde doğma noktasına ışınlandın!"
+  # Spawn System Messages
+  setspawn_message: "&aThe spawn block has been successfully set."
+  error_setspawn_message: "&cFailed to set the spawn location!"
+  notspawn_message: "&cSpawn location is not set."
+  teleport_spawn_message: "&aYou have successfully teleported to your spawn point!"
 
+interactive_blocks:
+  disable_blocks_send_message: true
+  disable_blocks_message: "&cYou cannot access this block!"
+  disable_blocks: false
+  block_list:
+    - CRAFTING_TABLE
 
 mob_settings:
+  # If you set true, no creature will spawn above the barrier block.
   barrier_block_mob_spawn_disable: true
-  enderman_teleport_disable: true
 
 
 time_loop: true
@@ -83,17 +87,16 @@ time_loops:
     commands:
       - "/kill erisos"
     message: "EZ LAN"
-    message_perm: barbarium.boss1
-
-
-#specific and varied characteristics.
-set_jump_block: false
-set_walk_speed: false
-set_fly_speed: false
-set_gamemode: ADVENTURE
-set_invisibility_effect: false
-on_exit_reset: false
-
+    # Sends messages only to players with permission. Leave blank if you don't want this.
+    message_perm: test.message
+  '2':
+    hour: 13
+    minutes: 00
+    commands:
+      - "/stop"
+    message: "The server will shut down after 10 minutes."
+    # Sends messages only to players with permission. Leave blank if you don't want this.
+    message_perm: timeloop.2.message
 
 
 

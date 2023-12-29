@@ -1,5 +1,5 @@
-name: qSystem
-version: '1.2.4'
+name: qCore
+version: '1.2.5'
 main: me.erisos.qsystem.QSystem
 commands:
   qSetSpawn:
