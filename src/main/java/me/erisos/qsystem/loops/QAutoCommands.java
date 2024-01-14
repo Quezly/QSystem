@@ -1,5 +1,6 @@
 package me.erisos.qsystem.loops;
 
+import me.despical.commons.util.Strings;
 import me.erisos.qsystem.QSystem;
 
 import java.time.LocalTime;
@@ -46,7 +47,7 @@ public class QAutoCommands {
             times.stream().filter(time -> time.hours == hours && time.minutes == minutes).forEach(time -> {
                 time.commands.forEach(cmd -> plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), cmd));
 
-                plugin.getServer().getOnlinePlayers().stream().filter(player -> player.hasPermission(time.messagePerm)).forEach(player -> player.sendMessage(time.message));
+                plugin.getServer().getOnlinePlayers().stream().filter(player -> player.hasPermission(time.messagePerm)).forEach(player -> player.sendMessage(Strings.format(time.message)));
             });
         }, 0L, 1200L);
     }
