@@ -10,7 +10,5 @@ commands:
     description: player effect reload
   discord:
     description: send a discord link to a player
-  örs:
-    description: player open anvil
   zırhtasarım:
     description: player open smihting table
