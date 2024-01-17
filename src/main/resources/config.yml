@@ -11,16 +11,14 @@ discord_link: "&9https://discord.gg/q4EKuxAvRt"
 
 #allowed commands
 allow_commands:
-  - /anvil
   - /örs
   - /qSetSpawn
-  - /qDefaultPlayerEffect
   - /spawn
   - /login
   - /register
 
 
-#Turns off players' login and logout messages.
+#Turns off players' login and logout messages. #BETA #BETA #BETA #BETA
 join_leave_message_disable: true
 
 #Title to send when using a command not in the list
@@ -72,29 +70,29 @@ interactive_blocks:
   disable_blocks_message: "&cYou cannot access this block!"
   disable_blocks: false
   block_list:
-    - CRAFTING_TABLE
+    - WORKBENCH
 
 mob_settings:
   # If you set true, no creature will spawn above the barrier block.
   barrier_block_mob_spawn_disable: true
 
 
-time_loop: true
+time_loop: false
 time_loops:
   '1':
     hour: 12
     minutes: 00
     commands:
       - "/kill erisos"
-    message: "EZ LAN"
+    message: "Erisos died."
     # Sends messages only to players with permission. Leave blank if you don't want this.
     message_perm: test.message
   '2':
     hour: 13
     minutes: 00
     commands:
-      - "/stop"
-    message: "The server will shut down after 10 minutes."
+      - "/kick erisos"
+    message: "Erisos kick."
     # Sends messages only to players with permission. Leave blank if you don't want this.
     message_perm: timeloop.2.message
 

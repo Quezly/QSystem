@@ -32,7 +32,7 @@ public class QSpawnEvent implements Listener {
         Player player = e.getPlayer();
         if (this.plugin.getConfig().getBoolean("spawn.firstjoin_teleport_spawn")) {
             if (!e.getPlayer().hasPlayedBefore()) {
-                player.teleport(location);
+                plugin.getServer().getScheduler().runTaskLater(plugin, () -> player.teleport(location), 5);
             }
 
             else if (e.getPlayer().hasPlayedBefore()) {
