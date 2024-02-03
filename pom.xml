@@ -51,7 +51,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <outputDirectory>C:/Users/ademm/OneDrive/Masaüstü/GloriaMC2/plugins</outputDirectory>
+                    <outputDirectory>C:/Users/ademm/OneDrive/Masaüstü/Erisos/plugins</outputDirectory>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>

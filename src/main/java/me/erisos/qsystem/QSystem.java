@@ -22,6 +22,7 @@ public class QSystem extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new QJoinTitle(this), this);
         getServer().getPluginManager().registerEvents(new QChatEvent(this), this);
         getServer().getPluginManager().registerEvents(new QInteractiveBlocks(this), this);
+        getServer().getPluginManager().registerEvents(new QJoinLeaveBoolean(this), this);
 
         new EntityEvents(this);
         new QAutoCommands(this);

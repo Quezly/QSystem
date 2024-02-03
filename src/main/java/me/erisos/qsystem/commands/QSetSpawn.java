@@ -19,11 +19,10 @@ public class QSetSpawn implements CommandExecutor {
         Player player = (Player)sender;
 
             if (sender instanceof Player) {
-
                     if (player.hasPermission("qsystem.setspawn")) {
 
                         Location location = player.getLocation();
-                        this.plugin.getConfig().set("spawn_location.world", location.getWorld().getName());
+                        this.plugin.getConfig().set("spawn.spawn_location.world", location.getWorld().getName());
                         this.plugin.getConfig().set("spawn.spawn_location.x", location.getX());
                         this.plugin.getConfig().set("spawn.spawn_location.y", location.getY());
                         this.plugin.getConfig().set("spawn.spawn_location.z", location.getZ());

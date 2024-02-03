@@ -7,14 +7,13 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Despical
- */
 public class QAutoCommands {
 
     private final List<CustomTime> times;
+    private final QSystem plugin;
 
     public QAutoCommands(QSystem plugin) {
+        this.plugin = plugin;
         this.times = new ArrayList<>();
 
         var config = plugin.getConfig();
@@ -30,7 +29,7 @@ public class QAutoCommands {
 
         for (final var key : section.getKeys(false)) {
             int hours = section.getInt(key + ".hour");
-            var minutes = section.getInt(key + ".minutes");
+            int minutes = section.getInt(key + ".minutes");
             var message = section.getString(key + ".message");
             var perm = section.getString(key + ".message_perm");
             var commands = section.getStringList(key + ".commands");
@@ -39,10 +38,13 @@ public class QAutoCommands {
             this.times.add(customTime);
         }
 
-        LocalTime localTime = LocalTime.now();
 
+        // Her 1 dakikada bir güncel saat ve dakikayı kontrol et
         plugin.getServer().getScheduler().runTaskTimer(plugin, () -> {
-            int hours = localTime.getHour(), minutes = localTime.getMinute();
+            LocalTime localTime = LocalTime.now();
+
+            int hours = localTime.getHour();
+            int minutes = localTime.getMinute();
 
             times.stream().filter(time -> time.hours == hours && time.minutes == minutes).forEach(time -> {
                 time.commands.forEach(cmd -> plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), cmd));

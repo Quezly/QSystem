@@ -10,5 +10,3 @@ commands:
     description: player effect reload
   discord:
     description: send a discord link to a player
-  zırhtasarım:
-    description: player open smihting table

@@ -22,7 +22,8 @@ public class QSpawnEvent implements Listener {
             return;
         }
 
-        Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn.spawn_location.world")),
+        Location location = new Location(this.plugin.getServer().getWorld(
+                this.plugin.getConfig().getString("spawn.spawn_location.world")),
                 this.plugin.getConfig().getDouble("spawn.spawn_location.x"),
                 this.plugin.getConfig().getDouble("spawn.spawn_location.y"),
                 this.plugin.getConfig().getDouble("spawn.spawn_location.z"),
@@ -54,7 +55,8 @@ public class QSpawnEvent implements Listener {
                 return;
             }
 
-            Location location = new Location(this.plugin.getServer().getWorld(this.plugin.getConfig().getString("spawn_location.world")),
+            Location location = new Location(this.plugin.getServer().getWorld(
+                    this.plugin.getConfig().getString("spawn.spawn_location.world")),
                     this.plugin.getConfig().getDouble("spawn.spawn_location.x"),
                     this.plugin.getConfig().getDouble("spawn.spawn_location.y"),
                     this.plugin.getConfig().getDouble("spawn.spawn_location.z"),
