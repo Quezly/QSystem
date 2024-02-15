@@ -30,6 +30,7 @@ join_leave_message_disable: true
 
 join_title:
   join_send_title: true
+  title_send_after_seconds: 3
   join_big_title: "&3Welcome"
   join_small_title: "&fYou can get information about the server by typing /help"
 

@@ -21,10 +21,13 @@ public class QJoinTitle implements Listener {
     public void OnScreenText(PlayerJoinEvent e) {
 
         Player player = e.getPlayer();
+        int configSecond = plugin.getConfig().getInt("join_title.title_send_after_seconds");
 
         if (this.plugin.getConfig().getBoolean("join_title.join_send_title")) {
-            player.sendTitle(Strings.format(plugin.getConfig().getString("join_title.join_big_title")),
-                    Strings.format(plugin.getConfig().getString("join_title.join_small_title")));
+            plugin.getServer().getScheduler().runTaskLater(plugin, () ->
+                    player.sendTitle(Strings.format(plugin.getConfig().getString("join_title.join_big_title")),
+                            Strings.format(plugin.getConfig().getString
+                                    ("join_title.join_small_title"))), configSecond * 20);
         }
     }
 

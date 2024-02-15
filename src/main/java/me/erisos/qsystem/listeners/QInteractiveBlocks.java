@@ -39,7 +39,7 @@ public class QInteractiveBlocks implements Listener {
         return config.getStringList("interactive_blocks.block_list").contains(blockType.name());
     }
 
-
+    @EventHandler
     public void PlaceBlock (BlockPlaceEvent e) {
         Player player = e.getPlayer();
         if (!player.hasPermission("qcore.placeblock")) {
@@ -48,6 +48,7 @@ public class QInteractiveBlocks implements Listener {
         }
     }
 
+    @EventHandler
     public void BreakBlock (BlockBreakEvent e) {
         Player player = e.getPlayer();
         if (!player.hasPermission("qcore.breakblock")) {
