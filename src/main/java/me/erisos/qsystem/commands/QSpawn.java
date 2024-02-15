@@ -19,7 +19,7 @@ public class QSpawn implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player)sender;
 
-                if (player.hasPermission("qsystem.spawn")) {
+                if (player.hasPermission("qcore.spawn")) {
                     if (!this.plugin.getConfig().isSet("spawn.spawn_location")) {
                         player.sendMessage(Strings.format(this.plugin.getConfig().getString("spawn.notspawn_message")));
                         return false;

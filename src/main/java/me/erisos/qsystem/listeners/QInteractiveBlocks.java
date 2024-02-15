@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class QInteractiveBlocks implements Listener {
@@ -35,5 +37,22 @@ public class QInteractiveBlocks implements Listener {
     private boolean BlockList(Material blockType) {
         FileConfiguration config = plugin.getConfig();
         return config.getStringList("interactive_blocks.block_list").contains(blockType.name());
+    }
+
+
+    public void PlaceBlock (BlockPlaceEvent e) {
+        Player player = e.getPlayer();
+        if (!player.hasPermission("qcore.placeblock")) {
+            e.setCancelled(true);
+            player.sendMessage(Strings.format(plugin.getConfig().getString("blocks.disable_block_placement_message")));
+        }
+    }
+
+    public void BreakBlock (BlockBreakEvent e) {
+        Player player = e.getPlayer();
+        if (!player.hasPermission("qcore.breakblock")) {
+            e.setCancelled(true);
+            player.sendMessage(Strings.format(plugin.getConfig().getString("blocks.disable_block_break_message")));
+        }
     }
 }

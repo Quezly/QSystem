@@ -42,7 +42,7 @@ public class QChatEvent implements Listener {
 
     @EventHandler(ignoreCancelled = true)
     public void onChat(PlayerChatEvent event) {
-        if (!event.getPlayer().hasPermission("qsystem.chat")) {
+        if (!event.getPlayer().hasPermission("qcore.chat")) {
             event.setCancelled(true);
             event.getPlayer().sendMessage(Strings.format(plugin.getConfig().getString("error_message_chat")));
 

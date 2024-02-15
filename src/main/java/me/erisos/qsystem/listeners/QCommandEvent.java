@@ -26,7 +26,7 @@ public class QCommandEvent implements Listener {
         List<String> allow_commands = plugin.getConfig().getStringList("allow_commands");
         String message = e.getMessage();
 
-        if (player.hasPermission("qsystem.command")) return;
+        if (player.hasPermission("qcore.command")) return;
         if (message.contains(" ")) message = message.split(" ")[0];
 
         if (!allow_commands.stream().anyMatch(message::startsWith)) {

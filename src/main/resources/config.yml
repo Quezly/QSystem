@@ -18,13 +18,15 @@ allow_commands:
   - /register
 
 
-#Turns off players' login and logout messages. #BETA #BETA #BETA #BETA
-join_leave_message_disable: true
-
 #Title to send when using a command not in the list
 not_allowed_command_send_title: true
 not_allowed_command_big_title: "What are you trying to do?!"
 not_allowed_command_small_title: "I guess you're the only smart one..."
+
+
+#Turns off players' login and logout messages. #BETA #BETA #BETA #BETA
+join_leave_message_disable: true
+
 
 join_title:
   join_send_title: true
@@ -69,8 +71,15 @@ interactive_blocks:
   disable_blocks_send_message: true
   disable_blocks_message: "&cYou cannot access this block!"
   disable_blocks: false
+  # https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
   block_list:
     - WORKBENCH
+
+blocks:
+  disable_block_placement: false
+  disable_block_break: false
+  disable_block_placement_message: "&cYou cannot placement a block!"
+  disable_block_break_message: "&cYou cannot break a block!"
 
 mob_settings:
   # If you set true, no creature will spawn above the barrier block.
@@ -83,8 +92,8 @@ time_loops:
     hour: 12
     minutes: 00
     commands:
-      - "/kill erisos"
-    message: "Erisos died."
+      - "/kick erisos"
+    message: "Erisos kick."
     # Sends messages only to players with permission. Leave blank if you don't want this.
     message_perm: test.message
   '2':

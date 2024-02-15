@@ -20,7 +20,7 @@ public class QCommands implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player) {
             Player player = (Player)commandSender;
-            if (player.hasPermission("qsystem.admin")) {
+            if (player.hasPermission("qcore.admin")) {
                 player.setWalkSpeed(0.2F);
                 player.setFlySpeed(0.2F);
                 player.setGameMode(GameMode.SURVIVAL);
